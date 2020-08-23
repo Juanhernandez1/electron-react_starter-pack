@@ -1,20 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 /* ********** desabilitado advetencias porque no me gusta verlas **************** */
-process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 /* ****************************************************************************** */
 /* ************************** importando electron ******************************* */
-const { app, BrowserWindow, Menu, screen, nativeImage } = require("electron");
+const { app, BrowserWindow, Menu, screen, nativeImage } = require('electron');
 /* *********************** Dependencias para Electron  ************************** */
-const isDev = require("electron-is-dev");
-const path = require("path");
-const url = require("url");
+const isDev = require('electron-is-dev');
+const path = require('path');
+const url = require('url');
 // const server = require('../../backend/bin/www');
 /* ************************** Eliminar menu de electron ******************************* */
 Menu.setApplicationMenu(null);
 
 /* ************************** icono a la ventana electron ******************************* */
-const image = nativeImage.createFromPath(path.join(__dirname, "icon.png"));
+const image = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 image.setTemplateImage(true);
 /* ****************************************************************************** */
 /* ******************** Objetos Para iniciarlizar Ventanas ********************** */
@@ -22,11 +22,11 @@ image.setTemplateImage(true);
 /* ****************************************************************************** */
 /* ************************* constantes para Url ******************************** */
 const mainUrl = isDev
-  ? "http://localhost:3000/"
+  ? 'http://localhost:3000/'
   : url.format({
-      pathname: path.join(__dirname, "../build/index.html"),
-      hash: "/",
-      protocol: "file",
+      pathname: path.join(__dirname, '../build/index.html'),
+      hash: '/',
+      protocol: 'file',
       slashes: true
     });
 /* ************************************************************************************ */
@@ -42,7 +42,7 @@ function createWindow() {
     icon: image,
     webPreferences: {
       nodeIntegration: true,
-      preload: path.join(__dirname, "preload.js")
+      preload: path.join(__dirname, 'preload.js')
     }
   });
 
@@ -61,7 +61,7 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
 
-  app.on("activate", () => {
+  app.on('activate', () => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
@@ -71,8 +71,8 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") app.quit();
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit();
 });
 
 // In this file you can include the rest of your app's specific main process
