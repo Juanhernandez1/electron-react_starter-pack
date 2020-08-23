@@ -1,0 +1,34 @@
+appId: tu-app-codename
+productName: nameApp
+directories:
+  output: dist
+  buildResources: assets
+files:
+  - filter:
+      - build/**/*
+      - build/**/*
+      - node_modules/**/*
+      - Data/**/*
+extraMetadata:
+  main: build/electron.js
+  name: nameApp
+win:
+  icon: resources/icon.png
+  target:
+    - target: nsis
+      arch:
+        - x64
+nsis:
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  menuCategory: true
+  allowElevation: false
+  allowToChangeInstallationDirectory: true
+  perMachine: true
+  oneClick: false
+extraFiles:
+  - filter:
+      - dll
+copyright: "Copyright © 2019 tu compani"
+extends: react-cra
+electronVersion: 9.2.1
